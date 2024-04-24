@@ -1,16 +1,17 @@
 [versions]
 agp = "8.2.0"
 kotlin = "1.9.20"
-compose = "1.6.5"
+compose = "1.6.6"
 compose-compiler = "1.5.4"
-compose-material3 = "1.1.2"
-androidxNavigation="2.6.0"
+compose-material3 = "1.2.1"
+
+androidxNavigation="2.7.7"
 hilt = "2.46"
-lifecycle = "2.6.1"
-googleMaps = "18.1.0"
+lifecycle = "2.7.0"
+googleMaps = "18.2.0"
 mapsCompose = "2.14.0"
-googleAuth = "20.7.0"
-googlePlaces = "3.3.0"
+googleAuth = "21.1.0"
+googlePlaces = "3.4.0"
 coroutines = "1.7.1"
 ktor="2.3.0"
 jetbrainsKotlinJvm = "1.9.20"
@@ -21,6 +22,7 @@ googleHttpClientGson = "1.40.1"
 exposed = "0.44.1"
 postgresql = "42.7.0"
 hikariCP = "5.1.0"
+kotlinx-datetime = "0.5.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -65,13 +67,13 @@ exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "e
 exposed-java-time = { module = "org.jetbrains.exposed:exposed-java-time", version.ref = "exposed" }
 postgresql-driver = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
 hikari-cp = { module = "com.zaxxer:HikariCP", version.ref = "hikariCP" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
 kotlinKapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 daggerHilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 jetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }

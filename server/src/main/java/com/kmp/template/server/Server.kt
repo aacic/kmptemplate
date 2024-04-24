@@ -20,14 +20,14 @@ val logger: Logger = LoggerFactory.getLogger("logger")
 fun main() {
 
     val port = (System.getenv("PORT") ?: "5000").toInt()
-    embeddedServer(Netty, port = port, host = "172.16.11.252") {
+    embeddedServer(Netty, port = port) {
         install(ContentNegotiation) {
             json()
         }
 
         install(CORS) {
             allowHeader(HttpHeaders.ContentType)
-            anyHost() // You might want to limit this in a production environment
+            anyHost() // This should be limited in production environment
         }
 
         routing {

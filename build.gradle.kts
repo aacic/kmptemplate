@@ -1,6 +1,3 @@
-group = "com.discoveracity"
-version = "1.0-SNAPSHOT"
-
 allprojects {
     repositories {
         google()

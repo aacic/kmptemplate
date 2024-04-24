@@ -61,8 +61,6 @@ tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "17"
 }
 
-
-
 application {
     mainClass.set("com.kmp.template.server.ServerKt")
 }
