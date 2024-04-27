@@ -23,19 +23,16 @@ class MyViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-
-            myFlow.emit(MyDomainObject("myText"))
-
-//            myUseCase.invoke().collect { result ->
-//                if (result.isSuccess) {
-//                    val myDomainObject = result.getOrNull()
-//                    myDomainObject?.let {
-//                        myFlow.emit(it)
-//                    }
-//                } else {
-//                    errorFlow.emit("Error")
-//                }
-//            }
+            myUseCase.invoke().collect { result ->
+                if (result.isSuccess) {
+                    val myDomainObject = result.getOrNull()
+                    myDomainObject?.let {
+                        myFlow.emit(it)
+                    }
+                } else {
+                    errorFlow.emit("Error")
+                }
+            }
         }
     }
 }
