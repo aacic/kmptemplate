@@ -1,6 +1,5 @@
 package com.kmp.template.android.viewmodel
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kmp.template.domain.MyDomainObject
 import com.kmp.template.usecases.MyUseCase
@@ -13,24 +12,23 @@ import javax.inject.Inject
 @HiltViewModel
 class MyViewModel @Inject constructor(
     private val myUseCase: MyUseCase
-) : ViewModel() {
+) : BaseViewModel() {
 
     private val myFlow = MutableStateFlow<MyDomainObject?>(null)
-    private val errorFlow = MutableStateFlow<String?>(null)
 
     val myDomainObject: StateFlow<MyDomainObject?> = myFlow
-    val error: StateFlow<String?> = errorFlow
 
     init {
         viewModelScope.launch {
             myUseCase.invoke().collect { result ->
+                println("result:" + result)
                 if (result.isSuccess) {
                     val myDomainObject = result.getOrNull()
                     myDomainObject?.let {
                         myFlow.emit(it)
                     }
                 } else {
-                    errorFlow.emit("Error")
+                    postError("My error")
                 }
             }
         }
