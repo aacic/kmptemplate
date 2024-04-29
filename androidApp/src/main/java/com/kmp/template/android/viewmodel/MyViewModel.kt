@@ -21,7 +21,6 @@ class MyViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             myUseCase.invoke().collect { result ->
-                println("result:" + result)
                 if (result.isSuccess) {
                     val myDomainObject = result.getOrNull()
                     myDomainObject?.let {

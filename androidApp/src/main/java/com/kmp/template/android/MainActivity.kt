@@ -46,47 +46,33 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    App(myViewModel)
-
+                    AppNavigation(myViewModel)
                 }
             }
         }
     }
-
-
 }
-@Composable
- fun App(myViewModel: MyViewModel) {
-    val snackbarHostState = remember { SnackbarHostState() }
-     HandleError(myViewModel, snackbarHostState)
-     AppNavigation(myViewModel, snackbarHostState)
-}
-
-@Composable
-fun HandleError(myViewModel: MyViewModel, snackbarHostState: SnackbarHostState) {
-    val error by myViewModel.error.collectAsState()
-
-
-    if (error != null) {
-        LaunchedEffect(key1 = error) {
-            println("showsnackbar")
-            snackbarHostState.showSnackbar(
-                message = error ?: "Unknown error",
-                duration = SnackbarDuration.Short
-            )
-             myViewModel.clearError()
-        }
-    }
-}
-
 @Composable
 @SuppressLint(
     "UnusedMaterial3ScaffoldPaddingParameter"
 )
-fun AppNavigation(myViewModel: MyViewModel, snackbarHostState: SnackbarHostState) {
+fun AppNavigation(myViewModel: MyViewModel) {
+    val snackbarHostState = remember { SnackbarHostState() }
+    val error by myViewModel.error.collectAsState()
+    if (error != null) {
+        LaunchedEffect(key1 = error) {
+            snackbarHostState.showSnackbar(
+                message = error ?: "Unknown error",
+                duration = SnackbarDuration.Short
+            )
+            myViewModel.clearError()
+        }
+    }
+
     val myDomainObject = myViewModel.myDomainObject.collectAsState().value
     val navController = rememberNavController()
     val currentRoute = getCurrentRoute(navController)
+
 
     Scaffold(
         bottomBar = {
@@ -109,4 +95,3 @@ fun AppNavigation(myViewModel: MyViewModel, snackbarHostState: SnackbarHostState
         }
     }
 }
-
