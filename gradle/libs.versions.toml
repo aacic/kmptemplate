@@ -23,6 +23,7 @@ exposed = "0.44.1"
 postgresql = "42.7.0"
 hikariCP = "5.1.0"
 kotlinx-datetime = "0.5.0"
+kermit = "1.0.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -68,6 +69,7 @@ exposed-java-time = { module = "org.jetbrains.exposed:exposed-java-time", versio
 postgresql-driver = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
 hikari-cp = { module = "com.zaxxer:HikariCP", version.ref = "hikariCP" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
+kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
