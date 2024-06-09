@@ -7,6 +7,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.ktor.client.HttpClient
+import io.ktor.client.plugins.HttpResponseValidator
+import io.ktor.client.plugins.ResponseException
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.DEFAULT
 import io.ktor.client.plugins.logging.LogLevel
@@ -32,6 +34,15 @@ object MainModule {
             install(Logging) {
                 level = LogLevel.ALL // Set the logging level (ALL, HEADERS, BODY, INFO, etc.)
                 logger = Logger.DEFAULT
+            }
+
+            HttpResponseValidator {
+                validateResponse { response ->
+                    val statusCode = response.status.value
+                    if (statusCode !in 200..299) {
+                        throw ResponseException(response, "Response status: $statusCode")
+                    }
+                }
             }
         }
     }
