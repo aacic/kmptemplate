@@ -2,14 +2,14 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinSerialization)
-
-
 }
 
 kotlin {
-    jvm() {
-        jvmToolchain(17)
+    jvmToolchain {
+        this.languageVersion.set(JavaLanguageVersion.of(17))
     }
+
+    jvm()
 
     androidTarget {
         compilations.all {
@@ -39,13 +39,11 @@ tasks.register("testClasses") {
     dependsOn(":shared:jvmTestClasses")
 }
 
-
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = "1.8"
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_1_8)
     }
 }
-
 
 android {
     namespace = "com.kmp.template.android"
@@ -59,4 +57,3 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
-

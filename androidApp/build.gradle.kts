@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.kotlinKapt)
     alias(libs.plugins.daggerHilt)
+    alias(libs.plugins.compose)
 }
 
 android {
@@ -70,5 +71,4 @@ dependencies {
     implementation(libs.maps.compose)
 
     implementation(libs.coroutines.android)
-
 }
