@@ -69,7 +69,6 @@ fun AppNavigation(myViewModel: MyViewModel) {
         }
     }
 
-    val myDomainObject = myViewModel.myDomainObject.collectAsState().value
     val navController = rememberNavController()
     val currentRoute = getCurrentRoute(navController)
 
@@ -83,7 +82,7 @@ fun AppNavigation(myViewModel: MyViewModel) {
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) }
     ) {
         NavHost(navController = navController, startDestination = Screen.HomeScreen.route) {
-            composable(Screen.HomeScreen.route) { HomeScreen(navController, myDomainObject) }
+            composable(Screen.HomeScreen.route) { HomeScreen(myViewModel, navController) }
             composable(Screen.ProfileScreen.route) { ProfileScreen() }
 
             composable(
