@@ -18,7 +18,7 @@ class MyViewModel @Inject constructor(
 
     fun invokeMyUseCase() {
         this.invokeUseCase (myFlow,"My error" ) {
-            myUseCase.invoke()
+            myUseCase.invoke("myParamName")
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.kmp.template.server
 
 import com.kmp.template.dto.MyDto
+import com.kmp.template.routes.MyRouteParams
 import io.ktor.http.HttpHeaders
 import io.ktor.server.application.install
 import io.ktor.server.engine.embeddedServer
@@ -14,6 +15,7 @@ import io.ktor.server.response.respond
 import io.ktor.server.routing.get
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import com.kmp.template.routes.Routes
 
 val logger: Logger = LoggerFactory.getLogger("logger")
 
@@ -31,9 +33,10 @@ fun main() {
         }
 
         routing {
-            get("/myroute") {
+            get("/${Routes.MY_ROUTE.value}") {
                     logger.info("Send response")
-                    call.respond(MyDto("MyText"))
+                    val param = call.parameters[Routes.MY_ROUTE.params<MyRouteParams>().myParamName]
+                    call.respond(MyDto("MyText: $param"))
             }
 
         }
