@@ -1,10 +1,8 @@
-package com.discoveracity.android.ui.app.navigation
+package com.kmp.template.android.navigation
 
 import androidx.annotation.DrawableRes
 import com.kmp.template.android.R
 import com.kmp.template.domain.MyDomainObject
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 
 sealed class Screen(val route: String, @DrawableRes val icon: Int, val title: String) {
     object HomeScreen : Screen("home", R.drawable.icon, "Home")

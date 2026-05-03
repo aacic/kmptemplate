@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.discoveracity.android.ui.app.navigation.Screen
+import com.kmp.template.android.navigation.Screen
 
 @Composable
 fun BottomNavigationBar(navController: NavController) {

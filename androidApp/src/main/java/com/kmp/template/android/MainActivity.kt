@@ -24,7 +24,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.discoveracity.android.ui.app.navigation.Screen
+import com.kmp.template.android.navigation.Screen
 import com.kmp.template.android.navigation.getCurrentRoute
 import com.kmp.template.android.ui.HomeScreen
 import com.kmp.template.android.ui.MyScreen

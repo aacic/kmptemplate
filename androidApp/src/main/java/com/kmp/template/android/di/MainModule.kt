@@ -1,5 +1,6 @@
 package com.kmp.template.android.di
 
+import com.kmp.template.repositories.MyRepository
 import com.kmp.template.usecases.MyUseCase
 
 import dagger.Module
@@ -49,7 +50,13 @@ class MainModule {
 
     @Provides
     @Singleton
-    fun provideGetPlacesUseCase(httpClient: HttpClient): MyUseCase {
-        return MyUseCase(httpClient)
+    fun provideMyRepository(httpClient: HttpClient): MyRepository {
+        return MyRepository(httpClient)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMyUseCase(myRepository: MyRepository): MyUseCase {
+        return MyUseCase(myRepository)
     }
 }

@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.discoveracity.android.ui.app.navigation.Screen
+import com.kmp.template.android.navigation.Screen
 import com.kmp.template.android.viewmodel.MyViewModel
 import java.util.UUID
 
